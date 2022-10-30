@@ -1,0 +1,95 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Sludgefeast</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Wanna Sludgefeast?</h1>
+    <form>
+        <label for="">Click for a Sludgefeast</label>
+        <input id="tabSubmit" type="submit" value="Submit"></input>
+    </form>
+    <div id="tabResults">
+    </div>
+    
+    <footer>
+        https://github.com/ktmall07/creative_project2
+    </footer>
+</body>
+
+<script>
+document.getElementById("tabSubmit").addEventListener("click", function(event) {
+  event.preventDefault();
+    const url2 = "https://www.songsterr.com/a/ra/songs/byartists.json?artists=Dinosaur";
+    fetch(url2)
+        .then(function(response) {
+          return response.json();
+        }).then(function(json) {
+            console.log(json);
+            var grid = document.getElementById('tabResults');
+            grid.style.backgroundColor = '#333';
+            let feast = json[60]
+            let pit = json[58]
+              let sludgefeast = "<p>This is " + feast.title + " by " + feast.artist.name + "</p";
+              let tarpit = "Another song is " + pit.title + " also by " + pit.artist.name + "</p";
+              
+              var results = document.getElementById('tabResults')
+            // //   sludgefeast += "<h1>" + json[60];
+    	       //// forecast += "<h2>" + moment(json.list[i].dt_txt).format('MMMM Do YYYY, h:mm:ss a') + "</h2>";
+    	       //// forecast += "<p>Temperature: " + json.list[i].main.temp + "</p>";
+    	       //// forecast += "<p>Description: " + json.list[i].weather[0].description + "</p>";
+    	       //// forecast += "<p>Wind Speed: " + json.list[i].wind.speed + "</p>";
+    	       //// forecast += "<p>Visibilty: " + json.list[i].visibility + "</p>";
+    	       //// forecast += '<img src="https://openweathermap.org/img/w/' + json.list[i].weather[0].icon + '.png"/>'
+    	        
+    	        var cell = document.createElement('div');
+    	        cell.innerHTML = sludgefeast + tarpit;
+    	        cell.style.border = 'solid 1px #222';
+    	        cell.style.borderRadius = '8px';
+    	        cell.style.backgroundColor = 'blue';
+    	        cell.style.color = 'white';
+    	        cell.style.margin = '4px';
+    	       // cell.style.width = '100px';
+    	        results.appendChild(cell);
+    	        var cell = document.createElement('div');
+    	        cell.innerHTML = tarpit;
+    	        cell.style.border = 'solid 1px #222';
+    	        cell.style.borderRadius = '8px';
+    	        cell.style.backgroundColor = 'blue';
+    	        cell.style.color = 'white';
+    	        cell.style.margin = '4px';
+    	       // cell.style.width = '100px';
+    	        results.appendChild(cell);
+    	        var cell = document.createElement('div');
+    	        cell.innerHTML = "Other songs by Dinosaur Jr. are: ";
+    	        cell.style.border = 'solid 1px #222';
+    	        cell.style.borderRadius = '8px';
+    	        cell.style.backgroundColor = 'blue';
+    	        cell.style.color = 'white';
+    	        cell.style.margin = '4px';
+    	       // cell.style.width = '100px';
+    	        results.appendChild(cell);
+    	   
+    	        for (let i = 11; i <= 99; i++) {
+    	            let song = "";
+    	            song += "<p>" + json[i].title + "</p>";
+    	            
+        	        var cell = document.createElement('div');
+        	        cell.innerHTML = song;
+        	        cell.style.border = 'solid 1px #222';
+        	        cell.style.borderRadius = '8px';
+        	        cell.style.backgroundColor = 'blue';
+        	        cell.style.color = 'white';
+        	        cell.style.margin = '4px';
+        	       // cell.style.width = '100px';
+        	        results.appendChild(cell);
+    	            
+    	        }
+            // }
+      });
+});
+</script>
+</html>
